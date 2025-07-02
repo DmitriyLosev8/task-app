@@ -1,4 +1,6 @@
 @use '@/styles/helpers' as *;
+@import '@a1rth/css-normalize';
+
 
 html {
   &.is-lock {

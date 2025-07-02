@@ -6,14 +6,20 @@ import classNames from 'classnames'
 const Task = (props) => {
   const {
     className,
+    title,
+    description,
+
   } = props
 
   return (
     <div
-      className={classNames(className, 'task container',)}
+      className={classNames(className, 'task',)}
     >
-      <RiTodoFill/>
-      Task
+      <h6 className="task__title">{title}</h6>
+      <p className="task__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores error incidunt nulla optio sequi totam?</p>
+
+
+
     </div>
   )
 }

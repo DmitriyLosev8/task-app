@@ -1,7 +1,17 @@
 @use '@/styles' as *;
 
 .task {
-  @include fluid-text(56,20);
+  @include fluid-text(20,14);
   color: var(--color-white);
+
+  &__title {
+    color: var(--color-red);
+
+  }
+
+  &__description {
+    @include fluid-text(16,10);
+    color: var(--color-red-90);
+  }
   
 }
