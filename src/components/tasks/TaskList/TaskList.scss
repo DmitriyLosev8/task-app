@@ -1,0 +1,9 @@
+@use '@/styles' as *;
+
+.task-list {
+  display: grid;
+  gap: fluid(10,6);
+  max-width: 600px;
+  margin: fluid(20,16) auto;
+  padding: fluid(15,10);
+}

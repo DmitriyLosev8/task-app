@@ -14,11 +14,6 @@ const Task = (props) => {
     onToggleButtonClicked,
   } = props
 
-  const onCheckButtonClicked = () => {
-    task.isCompleted = !task.isCompleted
-    console.log(task.isCompleted)
-  }
-
   return (
     <div
       className={classNames(className, `task ${task.isCompleted ? 'task__completed' : ''}`,)}
