@@ -2,17 +2,19 @@
 
 
 .task-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  //max-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr auto ;
+  gap: fluid(16,8);
+  margin-inline: auto;
+  max-width: 600px;
 
 
   &__input {
-    width: 45%;
+    //width: 45%;
     height: 50px;
     font-size: 1.3rem;
+    background-color: var(--color-gray-99);
+    color: var(--color-white);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;

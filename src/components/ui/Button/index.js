@@ -1,5 +1,3 @@
 import Button from './Button'
 
-expport
-default
-Button
+export default Button

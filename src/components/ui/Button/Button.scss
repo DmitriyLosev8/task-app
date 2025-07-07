@@ -4,13 +4,18 @@
  // margin-left: 20px;
   height: 50px;
   cursor: pointer;
-  background-color: beige;
+  background-color: var(--color-gray-99);
+
   font-size: 1.5rem;
-  padding: 10px 15px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
+  text-align: center;
 
   @include hover() {
-    background-color: rgb(240, 240, 155);
+    background-color: var(--color-black-20);
+    color: var(--color-white);
+    border: var(--border);
+    border-color: var(--color-white);
   }
 }
