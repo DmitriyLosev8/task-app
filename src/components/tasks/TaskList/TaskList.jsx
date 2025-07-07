@@ -1,13 +1,14 @@
 import './TaskList.scss'
 import classNames from 'classnames'
 import Task from "@/components/tasks/Task/Task.jsx";
+import TaskForm from "@/components/tasks/TaskForm/index.js";
 
 const TaskList = (props) => {
   const {
     className,
     tasks,
     onDeleteButtonClicked,
-    onToggleButtonClicked,
+    onCompleteButtonClicked,
 
   } = props
 
@@ -21,10 +22,12 @@ const TaskList = (props) => {
             task={task}
             key={task.id}
             onDeleteButtonClicked={onDeleteButtonClicked}
-            onToggleButtonClicked={onToggleButtonClicked}
+            onCompleteButtonClicked={onCompleteButtonClicked}
           />
         ))
       }
     </div>
   )
 }
+
+export default TaskList

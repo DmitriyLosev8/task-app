@@ -1,20 +1,20 @@
 @use '@/styles' as *;
 
-
 .task-form {
   display: grid;
   grid-template-columns: 1fr auto ;
   gap: fluid(16,8);
+  align-items: center;
+  justify-content: center;
   margin-inline: auto;
   max-width: 600px;
 
 
   &__input {
-    //width: 45%;
-    height: 50px;
+    height: fluid(60,40);
     font-size: 1.3rem;
     background-color: var(--color-gray-99);
-    color: var(--color-white);
+    color: var(--color-black);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;

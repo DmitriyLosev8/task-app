@@ -1,4 +1,5 @@
 import './Button.scss'
+import classNames from "classnames";
 
 
 const Button = (props) => {
@@ -7,16 +8,16 @@ const Button = (props) => {
     onClick,
     children,
     title,
-    isDisabled = false,
+    disabled = false,
   } = props
 
   return (
     <button
       {...props}
-      className='button'
+      className={classNames('button', className, `${disabled ? 'button__actions--disabled' : ''}`)}
       onClick={onClick}
       title={title}
-      disabled={isDisabled}
+      disabled={disabled}
     >
       {children}
     </button>

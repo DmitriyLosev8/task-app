@@ -23,22 +23,22 @@ const TaskForm = (props) => {
     }
 
   return (
-    <div
-      className={classNames(className, )}
-    >
+    <div className={classNames(className,)}>
         <form
             className='task-form'
             onSubmit={onFormSubmit}
         >
-            <input className='task-form__input'
+            <input
+              className='task-form__input'
               placeholder='Введите новую задачу'
               type="text"
               value={taskText}
               onChange={(event) => onInputChange(event)}
+              id="task-form__input"
             />
           <Button
             type="submit"
-            title="Submit"
+            title="Принять"
           >
             Принять
           </Button>
