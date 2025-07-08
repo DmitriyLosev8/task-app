@@ -2,6 +2,7 @@ import {useState} from "react";
 import './TaskForm.scss'
 import classNames from 'classnames'
 import Button from "@/components/ui/Button/Button.jsx";
+import TaskFormInput from "@/components/TaskFormInput/index.js";
 
 
 const TaskForm = (props) => {
@@ -10,7 +11,11 @@ const TaskForm = (props) => {
       onSubmitButtonClicked
   } = props
 
-    const [taskText, setTaskText] = useState('')
+  const [taskText, setTaskText] = useState('')
+  const [titleText, setTitleText] = useState('')
+  const [isInputExpanded,setIsInputExpanded] = useState(false)
+
+
 
     const onFormSubmit = (event) => {
         event.preventDefault()
@@ -18,9 +23,25 @@ const TaskForm = (props) => {
         setTaskText('')
     }
 
-    function onInputChange(event) {
+  function onInputTitleChange(event) {
+    setTitleText(event.target.value)
+  }
+
+  function onInputTextChange(event) {
         setTaskText(event.target.value)
+  }
+
+  const expandInputsArea = () => {
+    if (!isInputExpanded) {
+      setIsInputExpanded(true)
     }
+  }
+
+  const collapseInputsArea = () => {
+    if (isInputExpanded) {
+      setIsInputExpanded(false)
+    }
+  }
 
   return (
     <div className={classNames(className,)}>
@@ -28,19 +49,39 @@ const TaskForm = (props) => {
             className='task-form'
             onSubmit={onFormSubmit}
         >
-            <input
-              className='task-form__input'
-              placeholder='Введите новую задачу'
+          <div className='task-form__inputs'>
+            <TaskFormInput
+              className={`${!isInputExpanded ? 'visually-hidden' : ''}`}
+              placeholder='Название'
               type="text"
-              value={taskText}
-              onChange={(event) => onInputChange(event)}
-              id="task-form__input"
+              value={titleText}
+              onChange={(event) => onInputTitleChange(event)}
+              id="input-title"
             />
+           <TaskFormInput
+             placeholder='Введите новую задачу'
+             type="text"
+             value={taskText}
+             onChange={(event) => onInputTextChange(event)}
+             id="input-text"
+             onClick={expandInputsArea}
+           />
+          </div>
+
           <Button
             type="submit"
             title="Принять"
+            disabled={!taskText.length > 0 || !titleText.length > 0}
           >
             Принять
+          </Button>
+          <Button
+            type="button"
+            title="Закрыть"
+            onClick={collapseInputsArea}
+
+          >
+            Закрыть
           </Button>
 
         </form>

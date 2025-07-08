@@ -2,21 +2,30 @@
 
 .task-form {
   display: grid;
-  grid-template-columns: 1fr auto ;
+ // width: 100%;
+  //grid-template-columns: 1fr auto ;
   gap: fluid(16,8);
   align-items: center;
   justify-content: center;
   margin-inline: auto;
   max-width: 600px;
 
-
-  &__input {
-    height: fluid(60,40);
-    font-size: 1.3rem;
-    background-color: var(--color-gray-99);
-    color: var(--color-black);
-    padding: 10px 15px;
-    border: none;
+  &__inputs {
+    display: grid;
+    width: 100%;
     border-radius: 5px;
+    background-color: var(--color-white);
   }
+
+
+
+//  &__input {
+//    height: fluid(60,40);
+//    font-size: 1.3rem;
+//    background-color: var(--color-gray-99);
+//    color: var(--color-black);
+//    padding: 10px 15px;
+//    border: none;
+//    border-radius: 5px;
+//  }
 }

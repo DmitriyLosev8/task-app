@@ -16,7 +16,7 @@ const TaskList = (props) => {
     <div
       className={classNames(className, 'task-list')}
     >
-      {!tasks.length ? <h2>Список заметок пуст</h2> :
+      {!tasks.length ? <h4>Список заметок пуст</h4> :
         tasks.map((task) => (
           <Task
             task={task}

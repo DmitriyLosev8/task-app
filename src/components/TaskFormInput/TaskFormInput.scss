@@ -1,0 +1,12 @@
+@use '@/styles' as *;
+
+.task-form-input {
+  width: 100%;
+  height: fluid(60,40);
+  font-size: 1.3rem;
+  background-color: var(--color-gray-99);
+  color: var(--color-black);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+}
