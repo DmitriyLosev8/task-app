@@ -2,55 +2,28 @@
 
 .task {
   @include fluid-text(20,14);
+
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  margin: 15px 0;
+  padding: fluid(10,8) fluid(16,12);
   border-radius: 5px;
-  border: 2px solid #555;
-  color: #112d49;
-  background-color: #fbfef9;
-
-  &__title {
-    color: var(--color-red);
-
-  }
-
-  &__description {
-    @include fluid-text(16,10);
-    width: 100%;
-    text-align: left;
-  }
-
-  &__completed {
-    background-color: unset;
-    border-color: gray;
-    color: gray;
-
-    .task__icon {
-      color: gray;
-      &--check,
-      &--delete {
-        color: inherit;
-      }
-    }
-  }
+  border: var(--border);
+  color: var(--color-black);
+  background-color: var(--color-white);
 
   &__icon {
-    font-size: 1.8rem;
-    margin-right: 10px;
-    color: teal;
-
-    --taskIconSize: #{fluid(10,8)};
-
+    --taskIconSize: #{fluid(30,20)};
     @include square(var(--taskIconSize));
 
+    color: var(--color-black);
 
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
 
     &-check,
     &-delete {
       cursor: pointer;
-      color: lightgrey;
       padding: 0 7px;
       font-size: 1.8rem;
       transition: transform 0.3s;
@@ -70,6 +43,33 @@
     &--delete {
       @include hover() {
         color: red;
+      }
+    }
+  }
+
+  &__title {
+    color: var(--color-red);
+  }
+
+  &__description {
+    @include fluid-text(16,10);
+
+    width: 100%;
+    padding: fluid-to-laptop(8,6);
+    text-align: left;
+  }
+
+  &__completed {
+    background-color: unset;
+    border-color: gray;
+    color: var(--color-gray-60);
+
+    .task__icon {
+      color: var(--color-gray-60);
+
+      &--check,
+      &--delete {
+        color: inherit;
       }
     }
   }

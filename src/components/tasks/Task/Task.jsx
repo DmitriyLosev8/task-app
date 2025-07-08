@@ -19,8 +19,8 @@ const Task = (props) => {
     >
       <RiTodoFill className='task__icon'/>
       <div className='task__description'>{task.text}</div>
-      <RiDeleteBin2Line className='task__icon--delete' onClick={() => onDeleteButtonClicked(task.id)}/>
-      <FaCheck className='task__icon--check' onClick={() => onCompleteButtonClicked(task.id)}/>
+      <RiDeleteBin2Line className='task__icon task__icon--delete' onClick={() => onDeleteButtonClicked(task.id)}/>
+      <FaCheck className=' task__icon task__icon--check' onClick={() => onCompleteButtonClicked(task.id)}/>
     </div>
   )
 }
