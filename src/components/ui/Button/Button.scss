@@ -1,15 +1,15 @@
 @use '@/styles' as *;
 
 .button {
-  height: fluid(60,40);;
+  //height: fluid(60,40);
   cursor: pointer;
   background-color: var(--color-gray-99);
   color: var(--color-black);
-  font-size: 1.5rem;
-  padding: 10px;
+  //font-size: 1.5rem;
+  //padding: 10px;
   border: none;
   border-radius: 5px;
-  text-align: center;
+  //text-align: center;
 
   &__actions {
     --actionButtonSize: #{fluid(60,40)};

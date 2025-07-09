@@ -9,4 +9,11 @@
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
+
+  &--title {
+    &::placeholder {
+      color: var(--color-black);
+      font-weight: var(--font-bold);
+    }
+  }
 }

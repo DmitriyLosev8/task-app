@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 
-export const  UseClickOutSide = (ref, callback) => {
+export const  UseClickOutSide = (ref, callback, bool) => {
   const handleClick = (event) => {
     if(ref.current && !ref.current.contains(event.target)) {
       callback()
@@ -9,10 +9,10 @@ export const  UseClickOutSide = (ref, callback) => {
     }
   }
   useEffect(() => {
-    document.addEventListener("click",handleClick)
+    document.addEventListener("mousedown",handleClick)
     return () => {
-      document.removeEventListener("click",handleClick)
+      document.removeEventListener("mousedown",handleClick)
     }
-  }, []);
+  }, [bool]);
 }
 

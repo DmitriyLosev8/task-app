@@ -6,27 +6,24 @@ import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
 import {UseClickOutSide} from '@/components/hooks/useClickOutSide.js'
 
 
+
 const TaskForm = (props) => {
   const {
     className,
       onSubmitButtonClicked,
-      useClickOutSide,
   } = props
 
   const inputsAreaRef = useRef(null)
   const [taskText, setTaskText] = useState('')
   const [titleText, setTitleText] = useState('')
-  const [isInputExpanded,setIsInputExpanded] = useState(false)
+  const [isInputExpanded,setisInputExpanded] = useState(false)
 
 
-
-
-
-    const onFormSubmit = (event) => {
-        event.preventDefault()
-        onSubmitButtonClicked(taskText)
-        setTaskText('')
-    }
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+    onSubmitButtonClicked(taskText)
+    setTaskText('')
+  }
 
   function onInputTitleChange(event) {
     setTitleText(event.target.value)
@@ -38,21 +35,20 @@ const TaskForm = (props) => {
 
   const expandInputsArea = () => {
     if (!isInputExpanded) {
-      setIsInputExpanded(true)
+      setisInputExpanded(true)
     }
   }
 
   const collapseInputsArea = () => {
     if (isInputExpanded) {
-      setIsInputExpanded(false)
+      setisInputExpanded(false)
     }
   }
 
-  UseClickOutSide(inputsAreaRef,collapseInputsArea)
+  UseClickOutSide(inputsAreaRef,collapseInputsArea, isInputExpanded)
 
   return (
     <div className={classNames(className,)}
-         onClick={collapseInputsArea}
     >
         <form
             className='task-form'
@@ -62,7 +58,7 @@ const TaskForm = (props) => {
                ref={inputsAreaRef}
           >
             <TaskFormInput
-              className={`${!isInputExpanded ? 'visually-hidden' : ''}`}
+              className={`task-form-input--title ${!isInputExpanded ? 'visually-hidden' : ''}`}
               placeholder='Название'
               type="text"
               value={titleText}
@@ -77,23 +73,25 @@ const TaskForm = (props) => {
              id="input-text"
              onClick={expandInputsArea}
            />
+            <Button  // кнопки надо будет в отдельный див запихнуть и туда visually-hidden
+              className={`task-form__button ${!isInputExpanded ? 'visually-hidden' : ''}`}
+              type="submit"
+              title="Принять"
+              disabled={!taskText.length > 0 || !titleText.length > 0}
+            >
+              Принять
+            </Button>
+            <Button
+              className={`task-form__button ${!isInputExpanded ? 'visually-hidden' : ''}`}
+              type="button"
+              title="Закрыть"
+              onClick={collapseInputsArea}
+            >
+              Закрыть
+            </Button>
+
           </div>
 
-          <Button
-            type="submit"
-            title="Принять"
-            disabled={!taskText.length > 0 || !titleText.length > 0}
-          >
-            Принять
-          </Button>
-          <Button
-            type="button"
-            title="Закрыть"
-            onClick={collapseInputsArea}
-
-          >
-            Закрыть
-          </Button>
 
         </form>
     </div>

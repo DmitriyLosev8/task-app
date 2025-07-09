@@ -22,6 +22,7 @@ const TaskFormInput = (props) => {
       onChange={onChange}
       onClick={onClick}
       id={id}
+      autoComplete="off"
     />
   )
 }
