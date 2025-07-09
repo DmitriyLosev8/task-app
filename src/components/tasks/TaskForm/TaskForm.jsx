@@ -1,19 +1,24 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import './TaskForm.scss'
 import classNames from 'classnames'
 import Button from "@/components/ui/Button/Button.jsx";
-import TaskFormInput from "@/components/TaskFormInput/index.js";
+import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
+import {UseClickOutSide} from '@/components/hooks/useClickOutSide.js'
 
 
 const TaskForm = (props) => {
   const {
     className,
-      onSubmitButtonClicked
+      onSubmitButtonClicked,
+      useClickOutSide,
   } = props
 
+  const inputsAreaRef = useRef(null)
   const [taskText, setTaskText] = useState('')
   const [titleText, setTitleText] = useState('')
   const [isInputExpanded,setIsInputExpanded] = useState(false)
+
+
 
 
 
@@ -43,13 +48,19 @@ const TaskForm = (props) => {
     }
   }
 
+  UseClickOutSide(inputsAreaRef,collapseInputsArea)
+
   return (
-    <div className={classNames(className,)}>
+    <div className={classNames(className,)}
+         onClick={collapseInputsArea}
+    >
         <form
             className='task-form'
             onSubmit={onFormSubmit}
         >
-          <div className='task-form__inputs'>
+          <div className='task-form__inputs'
+               ref={inputsAreaRef}
+          >
             <TaskFormInput
               className={`${!isInputExpanded ? 'visually-hidden' : ''}`}
               placeholder='Название'
