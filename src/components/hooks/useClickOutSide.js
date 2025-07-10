@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 
-export const  UseClickOutSide = (ref, callback, bool) => {
+export const  UseClickOutSide = (ref, callback, isOpen) => {
   const handleClick = (event) => {
     if(ref.current && !ref.current.contains(event.target)) {
       callback()
@@ -13,6 +13,6 @@ export const  UseClickOutSide = (ref, callback, bool) => {
     return () => {
       document.removeEventListener("mousedown",handleClick)
     }
-  }, [bool]);
+  }, [isOpen]);
 }
 

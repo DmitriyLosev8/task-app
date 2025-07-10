@@ -19,11 +19,18 @@ const TaskForm = (props) => {
   const [isInputExpanded,setisInputExpanded] = useState(false)
 
 
+  const clearInputs = () => {
+    setTaskText('')
+    setTitleText('')
+  }
+
   const onFormSubmit = (event) => {
     event.preventDefault()
     onSubmitButtonClicked(taskText)
-    setTaskText('')
+    clearInputs()
   }
+
+
 
   function onInputTitleChange(event) {
     setTitleText(event.target.value)
@@ -60,6 +67,7 @@ const TaskForm = (props) => {
             <TaskFormInput
               className={`task-form-input--title ${!isInputExpanded ? 'visually-hidden' : ''}`}
               placeholder='Название'
+              maxlength={20}
               type="text"
               value={titleText}
               onChange={(event) => onInputTitleChange(event)}
@@ -73,26 +81,34 @@ const TaskForm = (props) => {
              id="input-text"
              onClick={expandInputsArea}
            />
-            <Button  // кнопки надо будет в отдельный див запихнуть и туда visually-hidden
-              className={`task-form__button ${!isInputExpanded ? 'visually-hidden' : ''}`}
-              type="submit"
-              title="Принять"
-              disabled={!taskText.length > 0 || !titleText.length > 0}
-            >
-              Принять
-            </Button>
-            <Button
-              className={`task-form__button ${!isInputExpanded ? 'visually-hidden' : ''}`}
-              type="button"
-              title="Закрыть"
-              onClick={collapseInputsArea}
-            >
-              Закрыть
-            </Button>
-
+            <div className={`task-form__buttons ${!isInputExpanded ? 'visually-hidden' : ''}`}>
+              <Button
+                className='task-form__button'
+                type="submit"
+                title="Записать"
+                disabled={!taskText.length > 0 && !titleText.length > 0}
+              >
+                Записать
+              </Button>
+              <Button
+                className='task-form__button'
+                type="button"
+                title="Очистить"
+                disabled={!taskText.length > 0 && !titleText.length > 0}
+                onClick={clearInputs}
+              >
+                Очистить
+              </Button>
+              <Button
+                className='task-form__button'
+                type="button"
+                title="Закрыть"
+                onClick={collapseInputsArea}
+              >
+                Закрыть
+              </Button>
+            </div>
           </div>
-
-
         </form>
     </div>
   )

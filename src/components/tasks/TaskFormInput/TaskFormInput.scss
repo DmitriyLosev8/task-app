@@ -1,14 +1,26 @@
 @use '@/styles/index' as *;
 
 .task-form-input {
-  width: 100%;
+  width: 98%;
   height: fluid(60,40);
-  font-size: 1.3rem;
-  background-color: var(--color-gray-99);
-  color: var(--color-black);
+  margin-inline: auto;
   padding: 10px 15px;
+  font-size: 1.3rem;
   border: none;
   border-radius: 5px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+
+  resize: none;
+
+
+
+
+
+  &:focus-visible,
+  &:focus {
+    outline: none;
+  }
 
   &--title {
     &::placeholder {

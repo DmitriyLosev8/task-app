@@ -11,17 +11,20 @@ const TaskFormInput = (props) => {
     onChange,
     onClick,
     id,
+    maxlength,
   } = props
 
-  return (
-    <input
+  return (   //доделать нормальный перенос текста
+    <textarea
       className={classNames(className, 'task-form-input')}
-      type='text'
       placeholder={placeholder}
+      wrap={'hard'}
+      cols={60}
       value={value}
       onChange={onChange}
       onClick={onClick}
       id={id}
+      maxLength={maxlength}
       autoComplete="off"
     />
   )

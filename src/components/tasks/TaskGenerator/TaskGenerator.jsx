@@ -12,7 +12,6 @@ import {UseClickOutSide} from "@/components/hooks/useClickOutSide.js";
 const TaskGenerator = (props) => {
   const {
     className,
-    useClickOutSide,
   } = props
 
   const [tasks, setCurrentTasks] = useState([])
