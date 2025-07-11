@@ -10,12 +10,8 @@
   border-radius: 5px;
   background-color: var(--color-white);
   color: var(--color-black);
-
   resize: none;
-
-
-
-
+  overflow-y: hidden;
 
   &:focus-visible,
   &:focus {

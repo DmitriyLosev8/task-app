@@ -57,6 +57,9 @@
     width: 100%;
     padding: fluid-to-laptop(8,6);
     text-align: left;
+    /*text-wrap: wrap;
+    white-space: break-spaces;*/
+    word-break: break-all;
   }
 
   &__completed {

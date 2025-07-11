@@ -3,9 +3,8 @@ import './TaskForm.scss'
 import classNames from 'classnames'
 import Button from "@/components/ui/Button/Button.jsx";
 import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
-import {UseClickOutSide} from '@/components/hooks/useClickOutSide.js'
-
-
+import {useClickOutside} from '@/components/hooks/useClickOutside.js'
+import {useTextAreaExpand} from '@/components/hooks/useTextAreaExpand.js'
 
 const TaskForm = (props) => {
   const {
@@ -14,9 +13,27 @@ const TaskForm = (props) => {
   } = props
 
   const inputsAreaRef = useRef(null)
-  const [taskText, setTaskText] = useState('')
+  const titleRef = useRef(null)
+  const descriptionRef = useRef(null)
   const [titleText, setTitleText] = useState('')
-  const [isInputExpanded,setisInputExpanded] = useState(false)
+  const [taskText, setTaskText] = useState('')
+  const [isInputExpanded,setIsInputExpanded] = useState(false)
+
+  const onInputTitleChange = (event) =>{  //сделать, чтобы инпут тайтла был нормального размера изначально
+    if (event) {
+      setTitleText(event.target.value)
+    }
+    else {
+      setTitleText(titleText)
+    }
+  }
+
+  const onInputTextChange = (event) =>{
+    setTaskText(event.target.value)
+  }
+
+  useTextAreaExpand(titleRef, titleText)
+  useTextAreaExpand(descriptionRef, taskText)
 
 
   const clearInputs = () => {
@@ -32,27 +49,20 @@ const TaskForm = (props) => {
 
 
 
-  function onInputTitleChange(event) {
-    setTitleText(event.target.value)
-  }
-
-  function onInputTextChange(event) {
-        setTaskText(event.target.value)
-  }
-
   const expandInputsArea = () => {
     if (!isInputExpanded) {
-      setisInputExpanded(true)
+      setIsInputExpanded(true)
+      onInputTitleChange()
     }
   }
 
   const collapseInputsArea = () => {
     if (isInputExpanded) {
-      setisInputExpanded(false)
+      setIsInputExpanded(false)
     }
   }
 
-  UseClickOutSide(inputsAreaRef,collapseInputsArea, isInputExpanded)
+  useClickOutside(inputsAreaRef,collapseInputsArea, isInputExpanded)
 
   return (
     <div className={classNames(className,)}
@@ -66,14 +76,16 @@ const TaskForm = (props) => {
           >
             <TaskFormInput
               className={`task-form-input--title ${!isInputExpanded ? 'visually-hidden' : ''}`}
+              ref={titleRef}
               placeholder='Название'
-              maxlength={20}
+              maxlength={100}
               type="text"
               value={titleText}
               onChange={(event) => onInputTitleChange(event)}
               id="input-title"
             />
            <TaskFormInput
+             ref={descriptionRef}
              placeholder='Введите новую задачу'
              type="text"
              value={taskText}

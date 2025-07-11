@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import TaskForm from "@/components/tasks/TaskForm/TaskForm.jsx";
 import TaskActions from "@/components/tasks/TaskActions/index.js";
 import TaskList from "@/components/tasks/TaskList/index.js";
-import {UseClickOutSide} from "@/components/hooks/useClickOutSide.js";
+
 
 
 const TaskGenerator = (props) => {
