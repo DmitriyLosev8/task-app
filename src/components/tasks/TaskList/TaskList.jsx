@@ -1,7 +1,7 @@
 import './TaskList.scss'
 import classNames from 'classnames'
 import Task from "@/components/tasks/Task/Task.jsx";
-import TaskForm from "@/components/tasks/TaskForm/index.js";
+
 
 const TaskList = (props) => {
   const {
@@ -12,7 +12,7 @@ const TaskList = (props) => {
 
   } = props
 
-  return (
+  return (     //Сделать нормальное отображение задач как в гугле
     <div
       className={classNames(className, 'task-list')}
     >

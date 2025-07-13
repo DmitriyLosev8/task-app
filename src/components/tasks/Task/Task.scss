@@ -2,14 +2,32 @@
 
 .task {
   @include fluid-text(20,14);
-
-  display: flex;
-  align-items: center;
+  max-width: 240px;
+  display: block;
+//  align-items: center;
+//  justify-content: space-between;
   padding: fluid(10,8) fluid(16,12);
   border-radius: 5px;
   border: var(--border);
   color: var(--color-black);
   background-color: var(--color-white);
+
+  &__text {
+    &--title {
+      color: var(--color-red);
+      width: 100%;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    &--description {
+      @include fluid-text(16,10);
+
+      width: 100%;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+  }
 
   &__icon {
     --taskIconSize: #{fluid(30,20)};
@@ -45,21 +63,6 @@
         color: red;
       }
     }
-  }
-
-  &__title {
-    color: var(--color-red);
-  }
-
-  &__description {
-    @include fluid-text(16,10);
-
-    width: 100%;
-    padding: fluid-to-laptop(8,6);
-    text-align: left;
-    /*text-wrap: wrap;
-    white-space: break-spaces;*/
-    word-break: break-all;
   }
 
   &__completed {

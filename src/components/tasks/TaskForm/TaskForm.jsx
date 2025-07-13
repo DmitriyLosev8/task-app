@@ -3,8 +3,8 @@ import './TaskForm.scss'
 import classNames from 'classnames'
 import Button from "@/components/ui/Button/Button.jsx";
 import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
-import {useClickOutside} from '@/components/hooks/useClickOutside.js'
-import {useTextAreaExpand} from '@/components/hooks/useTextAreaExpand.js'
+import {useClickOutside} from '@/hooks/useClickOutside.js'
+import {useTextAreaExpand} from '@/hooks/useTextAreaExpand.js'
 
 const TaskForm = (props) => {
   const {
@@ -16,43 +16,38 @@ const TaskForm = (props) => {
   const titleRef = useRef(null)
   const descriptionRef = useRef(null)
   const [titleText, setTitleText] = useState('')
-  const [taskText, setTaskText] = useState('')
+  const [descriptionText, setDescriptionText] = useState('')
   const [isInputExpanded,setIsInputExpanded] = useState(false)
 
-  const onInputTitleChange = (event) =>{  //сделать, чтобы инпут тайтла был нормального размера изначально
-    if (event) {
-      setTitleText(event.target.value)
-    }
-    else {
-      setTitleText(titleText)
-    }
+  const onInputTitleChange = (event) => {
+    setTitleText(event.target.value)
   }
 
+
+
   const onInputTextChange = (event) =>{
-    setTaskText(event.target.value)
+    setDescriptionText(event.target.value)
   }
 
   useTextAreaExpand(titleRef, titleText)
-  useTextAreaExpand(descriptionRef, taskText)
+  useTextAreaExpand(descriptionRef, descriptionText)
 
 
   const clearInputs = () => {
-    setTaskText('')
+    setDescriptionText('')
     setTitleText('')
   }
 
   const onFormSubmit = (event) => {
     event.preventDefault()
-    onSubmitButtonClicked(taskText)
+    onSubmitButtonClicked(descriptionText,titleText)
     clearInputs()
   }
-
 
 
   const expandInputsArea = () => {
     if (!isInputExpanded) {
       setIsInputExpanded(true)
-      onInputTitleChange()
     }
   }
 
@@ -62,7 +57,7 @@ const TaskForm = (props) => {
     }
   }
 
-  useClickOutside(inputsAreaRef,collapseInputsArea, isInputExpanded)
+  useClickOutside(inputsAreaRef, collapseInputsArea, isInputExpanded)
 
   return (
     <div className={classNames(className,)}
@@ -77,7 +72,7 @@ const TaskForm = (props) => {
             <TaskFormInput
               className={`task-form-input--title ${!isInputExpanded ? 'visually-hidden' : ''}`}
               ref={titleRef}
-              placeholder='Название'
+              placeholder='Дайте название'
               maxlength={100}
               type="text"
               value={titleText}
@@ -85,10 +80,11 @@ const TaskForm = (props) => {
               id="input-title"
             />
            <TaskFormInput
+             className='task-form-input--description'
              ref={descriptionRef}
              placeholder='Введите новую задачу'
              type="text"
-             value={taskText}
+             value={descriptionText}
              onChange={(event) => onInputTextChange(event)}
              id="input-text"
              onClick={expandInputsArea}
@@ -98,7 +94,7 @@ const TaskForm = (props) => {
                 className='task-form__button'
                 type="submit"
                 title="Записать"
-                disabled={!taskText.length > 0 && !titleText.length > 0}
+                disabled={!descriptionText.length > 0 && !titleText.length > 0}
               >
                 Записать
               </Button>
@@ -106,7 +102,7 @@ const TaskForm = (props) => {
                 className='task-form__button'
                 type="button"
                 title="Очистить"
-                disabled={!taskText.length > 0 && !titleText.length > 0}
+                disabled={!descriptionText.length > 0 && !titleText.length > 0}
                 onClick={clearInputs}
               >
                 Очистить

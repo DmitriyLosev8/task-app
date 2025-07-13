@@ -1,9 +1,11 @@
 @use '@/styles' as *;
 
 .task-list {
+  width: 100%;
   display: grid;
+  grid-template-columns: repeat(auto-fit , 240px);
   gap: fluid(16,8);
-  max-width: 600px;
-  margin: fluid(20,16) auto;
-  padding: fluid(15,10);
+  //max-width: 1000px;
+  margin: fluid(20,16);
+ // padding: fluid(15,10);
 }

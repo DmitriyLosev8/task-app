@@ -16,13 +16,16 @@ const TaskGenerator = (props) => {
 
   const [tasks, setCurrentTasks] = useState([])
 
-  const addTask = (taskText) =>{
+  const addTask = (description, title) =>{
     const newTask = {
-      text: taskText,
+      description: description,
+      title: title,
       isCompleted: false,
       id: uuidv4()
     }
-    setCurrentTasks([...tasks, newTask]);
+    const newTasksArray = [...tasks]
+    newTasksArray.unshift(newTask)
+    setCurrentTasks(newTasksArray)
   }
 
   const deleteTask = (taskId) => {

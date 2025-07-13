@@ -2,16 +2,15 @@
 
 .task-form-input {
   width: 98%;
+  min-height: 50px;
   height: fluid(60,40);
   margin-inline: auto;
   padding: 10px 15px;
-  font-size: 1.3rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--color-white);
+  //background-color: var(--color-white);
   color: var(--color-black);
   resize: none;
-  overflow-y: hidden;
 
   &:focus-visible,
   &:focus {
@@ -19,9 +18,15 @@
   }
 
   &--title {
+    @include fluid-text(20,16);
+
     &::placeholder {
       color: var(--color-black);
       font-weight: var(--font-bold);
     }
+  }
+
+  &--description {
+    @include fluid-text(18,14);
   }
 }
