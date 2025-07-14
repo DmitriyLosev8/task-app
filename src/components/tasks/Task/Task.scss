@@ -3,18 +3,26 @@
 .task {
   @include fluid-text(20,14);
 
-  min-width: 240px;
+ // min-width: 240px;
+  //max-width: 240px;
   min-height: 100px;
 
 
-  //display: block;
-//  align-items: center;
-//  justify-content: space-between;
+
+   // по видео масори грид - экспериментально
+  break-inside: avoid;
+  margin-bottom: 1em;
+ // min-height: 100px;
+
+
+
+
   padding: fluid(10,8) fluid(16,12);
   border-radius: 5px;
   border: var(--border);
   color: var(--color-black);
   background-color: var(--color-white);
+
 
   &__text {
     &--title {

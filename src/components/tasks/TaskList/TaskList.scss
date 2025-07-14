@@ -1,18 +1,43 @@
 @use '@/styles' as *;
 
 .task-list {
-  width: 100%;
 
-  /*display: grid;
-  grid-template-columns: repeat(auto-fill, 240px);
-  align-items: start;
-  justify-content: center;
-  gap: fluid(16, 8);*/
+  display: block;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  column-count: 6;
+
+  @include laptop {
+    column-count: 3;
+  }
+
+  @include mobile {
+    column-count: 2;
+  }
+
+
+  @include mobile-s {
+    column-count: 1;
+  }
+
+
+  /* width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-rows: 100px;*/
+  //grid-auto-flow: row;
+
+ // grid-auto-rows: minmax(100px, auto);
   gap: fluid(16, 8);
+  //align-items: start;
+  //justify-content: center;
+
+
+  /*display: flex;
+  flex-wrap: wrap;
+  gap: fluid(32, 16);
+  align-items: start;
+  align-content: start;*/
 
   //justify-content: space-around;
 
