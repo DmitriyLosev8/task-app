@@ -2,10 +2,22 @@
 
 .task-list {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit , 240px);
-  gap: fluid(16,8);
-  //max-width: 1000px;
+
+  /*display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
+  align-items: start;
+  justify-content: center;
+  gap: fluid(16, 8);*/
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: fluid(16, 8);
+
+  //justify-content: space-around;
+
+
+
   margin: fluid(20,16);
- // padding: fluid(15,10);
+
 }

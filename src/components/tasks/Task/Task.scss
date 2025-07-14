@@ -2,8 +2,12 @@
 
 .task {
   @include fluid-text(20,14);
-  max-width: 240px;
-  display: block;
+
+  min-width: 240px;
+  min-height: 100px;
+
+
+  //display: block;
 //  align-items: center;
 //  justify-content: space-between;
   padding: fluid(10,8) fluid(16,12);
