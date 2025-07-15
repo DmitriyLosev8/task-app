@@ -3,14 +3,17 @@
 .task {
   @include fluid-text(20,14);
 
- // min-width: 240px;
-  //max-width: 240px;
+  min-width: 240px;
+  max-width: 240px;
   min-height: 100px;
+  margin-right: fluid(16,8);
+
+
 
 
 
    // по видео масори грид - экспериментально
-  break-inside: avoid;
+ // break-inside: avoid;
   margin-bottom: 1em;
  // min-height: 100px;
 
