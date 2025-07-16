@@ -4,12 +4,16 @@
     //нормально сделать стили. чтобы было достаточно колонок и необходимое расположение
 
   width: 100%;
+  display: block;
+  gap: 15px;
 
-  margin: fluid(20,16) ;
+  margin: 0 auto;
 
   &__item {
+    display: flex;
+    justify-content: center;   //вот тут доделать стиль и настроить окончательно
     &:not(:last-child) {
-      margin-right: fluid(16,8);
+      //margin-right: fluid(16,8);
     }
   }
 
