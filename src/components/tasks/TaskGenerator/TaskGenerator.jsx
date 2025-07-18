@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid'
 import TaskForm from "@/components/tasks/TaskForm/TaskForm.jsx";
 import TaskActions from "@/components/tasks/TaskActions/index.js";
 import TaskList from "@/components/tasks/TaskList/index.js";
+import Masonry from "masonry-layout";
+
 
 
 
@@ -14,9 +16,22 @@ const TaskGenerator = (props) => {
     className,
   } = props
 
+
+
   const [tasks, setCurrentTasks] = useState([])
 
+/*  const msnry = new Masonry('.task-list', {
+    // options
+    itemSelector: '.task-list__item',
+    //columnWidth: 240,
+    gutter: 10,
+
+  })*/
+
+
+
   const addTask = (description, title) =>{
+
     const newTask = {
       description: description,
       title: title,
@@ -26,10 +41,13 @@ const TaskGenerator = (props) => {
     const newTasksArray = [...tasks]
     newTasksArray.unshift(newTask)
     setCurrentTasks(newTasksArray)
+
+
   }
 
   const deleteTask = (taskId) => {
     setCurrentTasks(tasks.filter((task) => task.id !== taskId))
+
   }
 
   const completeTask = (taskId) => {
@@ -50,6 +68,8 @@ const TaskGenerator = (props) => {
   }
 
   const completedTasksCount = tasks.filter((task) => task.isCompleted).length
+
+
 
   return (
     <div

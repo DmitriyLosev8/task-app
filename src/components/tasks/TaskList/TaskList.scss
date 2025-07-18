@@ -4,14 +4,21 @@
     //нормально сделать стили. чтобы было достаточно колонок и необходимое расположение
 
   width: 100%;
-  display: block;
-  gap: 15px;
+  //display: block;
+ // gap: 15px;
 
-  margin: 0 auto;
+  //margin: 0 auto;
 
   &__item {
-    display: flex;
+
+    width: 240px;
+    //min-height: 116px;
+    //padding: 8px;
+    /*display: flex;
     justify-content: center;   //вот тут доделать стиль и настроить окончательно
+    align-items: center;*/
+
+    margin-bottom: 10px;
     &:not(:last-child) {
       //margin-right: fluid(16,8);
     }
