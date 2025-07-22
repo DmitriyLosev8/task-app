@@ -3,7 +3,7 @@
 .task-list {
     //нормально сделать стили. чтобы было достаточно колонок и необходимое расположение
 
-  width: 100%;
+ // width: 100%;
   //display: block;
  // gap: 15px;
 
@@ -11,14 +11,14 @@
 
   &__item {
 
-    width: 240px;
-    //min-height: 116px;
-    //padding: 8px;
+    width: 256px;
+    min-height: 116px;
+    padding: fluid(8,6);
     /*display: flex;
     justify-content: center;   //вот тут доделать стиль и настроить окончательно
     align-items: center;*/
 
-    margin-bottom: 10px;
+    //margin-bottom: 10px;
     &:not(:last-child) {
       //margin-right: fluid(16,8);
     }
