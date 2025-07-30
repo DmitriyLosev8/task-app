@@ -1,16 +1,8 @@
 import './TaskList.scss'
 import classNames from 'classnames'
 import Task from "@/components/tasks/Task/Task.jsx";
-//import { Masonry } from 'react-masonry'
-//import Masonry  from 'react-masonry-css'
+//import MasonryTask from "@/components/tasks/MasonryTask/index.js";
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
-
-
-
-
-
-
-
 
 const TaskList = (props) => {
   const {
@@ -21,38 +13,77 @@ const TaskList = (props) => {
 
   } = props
 
+  const columnsBreakpoints = { 0: 1, 480: 3, 1023: 4, 1240: 6 }
+  const gap = 15
+
+  function renderCard()  {
+    tasks.map((task ) => (
+     // <div className='task-list__item' key={task.id}>
+        <Task
+          task={task}
+          key={task.id}
+          onDeleteButtonClicked={onDeleteButtonClicked}
+          onCompleteButtonClicked={onCompleteButtonClicked}
+        />
+     // </div>
+    ))
+  }
 
 
-  const breakpoints = {
-    default: 6,
-    1023: 4,
-    767: 3,
-    480: 1,
 
-  };
+/*  return <div
+    className={classNames(className, 'task-list')}
+  >
+    {!tasks.length ? <h4>Список заметок пуст</h4> :
+      <MasonryTask
+        todos={tasks}
+        columnsBreakpoints={columnsBreakpoints}
+        gap={gap}
+        renderCard={renderCard}
+      />
+    }
+  </div>*/
 
 
 
+    const columnBreakpoints = {
+      350: 1,
+      533: 2,
+      783: 3,
+      1024: 4,
+      1280: 5,
+      1560: 6,
+  }
 
-   return <div
+  const gutterBreakpoints = {
+    1240: '16px',
+    1023: '14px',
+    767: '12px',
+    480: '18px',
+  }
+
+  return <div
     className={classNames(className, 'task-list')}
   >
 
     {!tasks.length ? <h4>Список заметок пуст</h4> :
       <ResponsiveMasonry
-        columnsCountBreakPoints={breakpoints}
-        gutterBreakpoints={{350: "12px", 750: "16px", 900: "24px"}}
+        /*columnsCountBreakPoints={columnBreakpoints}
+        gutterBreakpoints={gutterBreakpoints}*/
+        columnsCountBreakPoints={columnBreakpoints}
+        gutterBreakpoints={{350: "8px", 750: "12px", 900: "16px"}}
       >
         <Masonry
         >
           {tasks.map((task ) => (
-            <div className='task-list__item' key={task.id}>
+           // <div className='task-list__item' key={task.id}>
               <Task
                 task={task}
+                key={task.id}
                 onDeleteButtonClicked={onDeleteButtonClicked}
                 onCompleteButtonClicked={onCompleteButtonClicked}
               />
-            </div>
+           // </div>
           ))}
         </Masonry>
       </ResponsiveMasonry>

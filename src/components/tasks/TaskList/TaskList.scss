@@ -2,14 +2,31 @@
 
 .task-list {
     //нормально сделать стили. чтобы было достаточно колонок и необходимое расположение
+  /*display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: fluid(16,8);
+  height: 600px;
+  width: 100%;*/
 
- // width: 100%;
+
+
+
+
+
+
+
+
+  // width: 100%;
   //display: block;
  // gap: 15px;
 
-  //margin: 0 auto;
+ // margin: 0 auto;
 
   &__item {
+
+    display: flex;
+    justify-content: center;
 
     width: 256px;
     min-height: 116px;
