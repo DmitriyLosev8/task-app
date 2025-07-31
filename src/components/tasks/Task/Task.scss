@@ -3,12 +3,9 @@
 .task {
   @include fluid-text(20,14);
 
-
-  //float: left;
-
-  min-height: 100px;
+  min-height: 70px;
   width: 240px;
-  min-width: 240px;
+ // min-width: 240px;
 
   padding: fluid(10,8) fluid(16,12);
   border-radius: 5px;
@@ -18,7 +15,6 @@
 
   @include mobile-m {
     width: 100%;
-
   }
 
   &__text {
@@ -38,8 +34,20 @@
     }
   }
 
+  &__icons-container {
+    min-height: 30px;
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__icon {
-    --taskIconSize: #{fluid(30,20)};
+    --taskIconSize: #{fluid(20,12)};
     @include square(var(--taskIconSize));
 
     color: var(--color-black);

@@ -2,6 +2,7 @@ import { RiTodoFill, RiDeleteBin2Line } from 'react-icons/ri'
 import {FaCheck} from "react-icons/fa";
 import './Task.scss'
 import classNames from 'classnames'
+import {useState} from "react";
 
 const Task = (props) => {
   const {
@@ -11,9 +12,13 @@ const Task = (props) => {
     onCompleteButtonClicked,
   } = props
 
+  const [isMouseOver, setMouseOver] = useState(false)
+
   return (
     <div
       className={classNames(className, `task ${task.isCompleted ? 'task__completed' : ''}`,)}
+      onMouseOver={() => setMouseOver(true)}
+      onMouseOut={() => setMouseOver(false)}
     >
       {/*<RiTodoFill className='task__icon'/>*/}
       <div className='task__text'>
@@ -24,11 +29,15 @@ const Task = (props) => {
           <p>{task.description}</p>
         </div>
       </div>
-      {/*<div className='task__icons'>*/}
-      {/*  <RiDeleteBin2Line className='task__icon task__icon--delete' onClick={() => onDeleteButtonClicked(task.id)}/>*/}
-      {/*  <FaCheck className=' task__icon task__icon--check' onClick={() => onCompleteButtonClicked(task.id)}/>*/}
-      {/*</div>*/}
-
+      <div className='task__icons-container'>
+        <div
+          className={`task__icons ${!isMouseOver ? 'visually-hidden' : ''}`}
+          //className='task__icons'
+        >
+          <RiDeleteBin2Line className='task__icon task__icon--delete' onClick={() => onDeleteButtonClicked(task.id)}/>
+          <FaCheck className=' task__icon task__icon--check' onClick={() => onCompleteButtonClicked(task.id)}/>
+        </div>
+      </div>
     </div>
   )
 }
