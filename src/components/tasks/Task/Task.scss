@@ -3,18 +3,35 @@
 .task {
   @include fluid-text(20,14);
 
-  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
   width: 240px;
- // min-width: 240px;
-
-  padding: fluid(10,8) fluid(16,12);
+  padding-inline: fluid(16,12);
+  padding-top: fluid(10,8);
   border-radius: 5px;
   border: var(--border);
   color: var(--color-black);
   background-color: var(--color-white);
 
+  @include hover() {
+    box-shadow: 0 0 5px 2px var(--color-black-30);
+    transition-duration: var(--transition-duration);
+  }
+
   @include mobile-m {
     width: 100%;
+  }
+
+  &__modal {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-gray-60);
+    justify-content: center;
+    align-items: center;
+
   }
 
   &__text {
@@ -44,24 +61,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: var(--transition-duration-longer);
   }
 
   &__icon {
-    --taskIconSize: #{fluid(20,12)};
+    --taskIconSize: #{fluid(18,12)};
     @include square(var(--taskIconSize));
 
-    color: var(--color-black);
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+    color: var(--color-black-20);
 
     &-check,
     &-delete {
       cursor: pointer;
       padding: 0 7px;
       font-size: 1.8rem;
-      transition: transform 0.3s;
+      transition: transform var(--transition-duration-longer);
 
       @include hover() {
         cursor: pointer;

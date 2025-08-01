@@ -13,12 +13,18 @@ const Task = (props) => {
   } = props
 
   const [isMouseOver, setMouseOver] = useState(false)
+  const [isModal, setIsModal] = useState(false)
+
+  const toggleModalStatus = () => {   //переключение модальности окна
+
+  }
 
   return (
     <div
       className={classNames(className, `task ${task.isCompleted ? 'task__completed' : ''}`,)}
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
+      onClick={() => setIsModal(!isModal)}
     >
       {/*<RiTodoFill className='task__icon'/>*/}
       <div className='task__text'>
@@ -32,7 +38,7 @@ const Task = (props) => {
       <div className='task__icons-container'>
         <div
           className={`task__icons ${!isMouseOver ? 'visually-hidden' : ''}`}
-          //className='task__icons'
+         // className='task__icons'
         >
           <RiDeleteBin2Line className='task__icon task__icon--delete' onClick={() => onDeleteButtonClicked(task.id)}/>
           <FaCheck className=' task__icon task__icon--check' onClick={() => onCompleteButtonClicked(task.id)}/>
