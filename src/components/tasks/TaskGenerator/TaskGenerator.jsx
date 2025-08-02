@@ -28,6 +28,14 @@ const TaskGenerator = (props) => {
     setCurrentTasks(newTasksArray)
   }
 
+  const refreshOneTask = (taskId, title, description) => {
+    setCurrentTasks(tasks.map((task) => {
+      return task.id === taskId
+        ? {...task, title: title, description: description}
+        : {...task}
+    }))
+  }
+
   const deleteTask = (taskId) => {
     setCurrentTasks(tasks.filter((task) => task.id !== taskId))
 
@@ -71,6 +79,7 @@ const TaskGenerator = (props) => {
         tasks={tasks}
         onDeleteButtonClicked={deleteTask}
         onCompleteButtonClicked={completeTask}
+        onCloseModalClicked={refreshOneTask}
       />
       {completedTasksCount > 0 &&
         <h4>{`Вы завершили ${completedTasksCount} ${completedTasksCount > 1

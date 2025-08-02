@@ -9,7 +9,7 @@ import {useTextAreaExpand} from '@/hooks/useTextAreaExpand.js'
 const TaskForm = (props) => {
   const {
     className,
-      onSubmitButtonClicked,
+    onSubmitButtonClicked,
   } = props
 
   const inputsAreaRef = useRef(null)
@@ -22,8 +22,6 @@ const TaskForm = (props) => {
   const onInputTitleChange = (event) => {
     setTitleText(event.target.value)
   }
-
-
 
   const onInputTextChange = (event) =>{
     setDescriptionText(event.target.value)

@@ -20,7 +20,6 @@ const TaskFormInput = (props) => {
       className={classNames(className, 'task-form-input')}
       ref={ref}
       placeholder={placeholder}
-      //wrap='hard'
       rows={1}
       value={value}
       onChange={onChange}
