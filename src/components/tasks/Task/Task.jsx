@@ -4,9 +4,10 @@ import './Task.scss'
 import classNames from 'classnames'
 import {useRef, useState} from "react";
 import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
-import {useTextAreaExpand} from "@/hooks/useTextAreaExpand.js";
+import {useInputAreaExpand} from "@/hooks/useInputAreaExpand.js";
 import {useClickOutside} from "@/hooks/useClickOutside.js";
 import TaskModal from "@/components/tasks/TaskModal/index.js";
+import {useSetHeightOfTextArea} from "@/hooks/useSetHeightOfTextArea.js";
 
 const Task = (props) => {
   const {
@@ -18,15 +19,14 @@ const Task = (props) => {
 
   } = props
 
+  const descriptionTextAreaRef = useRef(null)
   const [isMouseOver, setMouseOver] = useState(false)
   const [isModal, setIsModal] = useState(false)
+  const [isNeedToLimitTextAreaHeight, setIsNeedToLimitTextAreaHeight] = useState(false)
 
-  const taskModalRef = useRef(null)
-  const titleRef = useRef(null)
-  const descriptionRef = useRef(null)
   const [titleText, setTitleText] = useState(task.title)
   const [descriptionText, setDescriptionText] = useState(task.description)
-  //const [isInputExpanded,setIsInputExpanded] = useState(false)
+
 
   const onInputTitleChange = (event) => {
     setTitleText(event.target.value)
@@ -36,28 +36,36 @@ const Task = (props) => {
     setDescriptionText(event.target.value)
   }
 
-  useTextAreaExpand(titleRef, titleText)
-  useTextAreaExpand(descriptionRef, descriptionText)
-
   const closeModal = () => {
     setIsModal(false)
     onCloseModalClicked(task.id, titleText, descriptionText )
   }
 
-/*  const expandInputsArea = () => {
-    if (!isInputExpanded) {
-      setIsInputExpanded(true)
+  /*const setHeightOfTextArea = () => {
+
+    const necessaryHeightOfTextArea = document.documentElement.clientHeight/100 * 50
+
+    console.log('необходимая высота текстовой зоны - ' + necessaryHeightOfTextArea)
+
+    if(descriptionTextAreaRef.current) {
+      const currentTextAreaHeight = descriptionTextAreaRef.current?.scrollHeight
+     // const currentTextAreaHeight =
+      console.log('высота текстовой зоны ДО - ' + currentTextAreaHeight)
+
+      if(currentTextAreaHeight >= necessaryHeightOfTextArea){
+        descriptionTextAreaRef.current.style.height = necessaryHeightOfTextArea + 'px'
+        console.log('высота текстовой зоны ПОСЛЕ - ' + descriptionTextAreaRef.current.style.height)
+        setIsNeedToLimitTextAreaHeight(true)
+      }
+      else {
+        setIsNeedToLimitTextAreaHeight(false)
+      }
     }
+
+
   }*/
 
-  /*const collapseInputsArea = () => {
-    if (isInputExpanded) {
-      setIsInputExpanded(false)
-    }
-  }*/
-
-  //useClickOutside(taskModalRef, setIsModal(false), isModal)
-
+ // useSetHeightOfTextArea(descriptionTextAreaRef, 50, 'visually-hidden')
 
   return (
     <div className='task__container'>
@@ -71,11 +79,16 @@ const Task = (props) => {
           className={`task__text `}
           onClick={() => setIsModal(!isModal)}
         >
-          <div className='task__text--title'>
+          <div className='task__text-title'>
             <p>{titleText}</p>
           </div>
-          <div className='task__text--description'>
-            <p>{descriptionText}</p>
+          <div
+            className={`task__text-description ${isNeedToLimitTextAreaHeight ? 'task__text-description--expanded' : ''}`}
+           // className='task__text-description'
+            ref={descriptionTextAreaRef}
+
+            >
+            <p>{descriptionText}  </p>
           </div>
         </div>
         <div className='task__icons-container'>
@@ -87,7 +100,6 @@ const Task = (props) => {
           </div>
         </div>
       </div>
-
       <TaskModal
         className={`${!isModal ? 'visually-hidden' : ''}`}
         isModal={isModal}
@@ -96,6 +108,7 @@ const Task = (props) => {
         onInputTitleChange={onInputTitleChange}
         onInputDescriptionChange={onInputDescriptionChange}
         closeModal={closeModal}
+        //setHeightOfTextArea={setHeightOfTextArea}
       />
     </div>
   )

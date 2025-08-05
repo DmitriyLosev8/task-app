@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Button from "@/components/ui/Button/Button.jsx";
 import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
 import {useClickOutside} from '@/hooks/useClickOutside.js'
-import {useTextAreaExpand} from '@/hooks/useTextAreaExpand.js'
+import {useInputAreaExpand} from '@/hooks/useInputAreaExpand.js'
 
 const TaskForm = (props) => {
   const {
@@ -27,8 +27,8 @@ const TaskForm = (props) => {
     setDescriptionText(event.target.value)
   }
 
-  useTextAreaExpand(titleRef, titleText)
-  useTextAreaExpand(descriptionRef, descriptionText)
+  useInputAreaExpand(titleRef, titleText)
+  useInputAreaExpand(descriptionRef, descriptionText)
 
 
   const clearInputs = () => {

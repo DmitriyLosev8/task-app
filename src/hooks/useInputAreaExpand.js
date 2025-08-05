@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 
-export const  useTextAreaExpand = (ref, text,  ) => {
+export const  useInputAreaExpand = (ref, text,  ) => {
 
   const halfOfWindowInnerHeight = document.documentElement.clientHeight/2
 

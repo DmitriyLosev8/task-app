@@ -2,7 +2,7 @@ import './TaskModal.scss'
 import classNames from 'classnames'
 import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
 import {useRef} from "react";
-import {useTextAreaExpand} from "@/hooks/useTextAreaExpand.js";
+import {useInputAreaExpand} from "@/hooks/useInputAreaExpand.js";
 import {useClickOutside} from "@/hooks/useClickOutside.js";
 import Button from "@/components/ui/Button/index.js";
 
@@ -15,16 +15,23 @@ const TaskModal = (props) => {
     onInputTitleChange,
     onInputDescriptionChange,
     closeModal,
+    setHeightOfTextArea,
   } = props
 
   const taskModalRef = useRef(null)
   const titleRef = useRef(null)
   const descriptionRef = useRef(null)
 
-  useTextAreaExpand(titleRef, titleText)
-  useTextAreaExpand(descriptionRef, descriptionText)
+  useInputAreaExpand(titleRef, titleText)
+  useInputAreaExpand(descriptionRef, descriptionText)
 
   useClickOutside(taskModalRef, closeModal, isModal)
+
+ /* const submitTask = () => {
+    setHeightOfTextArea()
+    closeModal()
+
+  }*/
   
   return (
     <div

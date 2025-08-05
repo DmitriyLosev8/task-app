@@ -9,6 +9,13 @@
   visibility: hidden;
 }
 
+@mixin setHeightTextArea ($height) {
+  @if ($height >= 70vh) {
+    height: 70vh;
+    background-color: var(--color-red-45);
+  }
+}
+
 @mixin show {
   opacity: 1;
   visibility: visible;
