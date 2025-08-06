@@ -1,24 +1,20 @@
 @use '@/styles' as *;
 
 .task {
-  @include fluid-text(20,14);
+  @include fluid-text(20, 14);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
 
-  padding-inline: fluid(16,12);
-  padding-top: fluid(10,8);
+  padding-inline: fluid(16, 12);
+  padding-top: fluid(10, 8);
   border-radius: var(--border-radius-s);
   border: var(--border);
   color: var(--color-black);
   background-color: var(--color-white);
   //max-height: 70vh;
-
-
-
-
 
   @include hover() {
     box-shadow: 0 0 8px 2px var(--color-black-30);
@@ -27,7 +23,7 @@
 
   &__container {
     min-height: 100px;
-   // max-height: 70vh;
+    // max-height: 70vh;
     width: 240px;
 
 
@@ -48,26 +44,33 @@
 
 
     &-title {
-      @include fluid-text(18,14);
+      @include fluid-text(18, 14);
 
-      margin-bottom: fluid(14,10);
+      margin-bottom: fluid(14, 10);
       font-weight: 500;
     }
 
     &-description {
-      @include fluid-text(16,10);
+      @include fluid-text(16, 10);
       --currentHeight: offsetHeight;
+      --number-of-lines-in-task-text-area: 0;
 
 
-     // @include setHeightTextArea (var(--currentHeight));
+      // @include setHeightTextArea (var(--currentHeight));
+      &--expanded {
+        display: -webkit-box;
+        -webkit-line-clamp: var(--number-of-lines-in-task-text-area);
+        line-clamp: var(--number-of-lines-in-task-text-area);
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        //background-color: var(--color-red-45);
+      }
 
 
     }
 
-     /* &--expanded {
-        background-color: var(--color-red-45);
-      }
-    }*/
   }
 
   &__icons-container {

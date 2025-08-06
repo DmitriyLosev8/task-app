@@ -3,9 +3,6 @@ import {FaCheck} from "react-icons/fa";
 import './Task.scss'
 import classNames from 'classnames'
 import {useRef, useState} from "react";
-import TaskFormInput from "@/components/tasks/TaskFormInput/index.js";
-import {useInputAreaExpand} from "@/hooks/useInputAreaExpand.js";
-import {useClickOutside} from "@/hooks/useClickOutside.js";
 import TaskModal from "@/components/tasks/TaskModal/index.js";
 import {useSetHeightOfTextArea} from "@/hooks/useSetHeightOfTextArea.js";
 
@@ -41,31 +38,18 @@ const Task = (props) => {
     onCloseModalClicked(task.id, titleText, descriptionText )
   }
 
-  /*const setHeightOfTextArea = () => {
+  const setExpandOfTextArea = () => {
+    setIsNeedToLimitTextAreaHeight(true)
+  }
 
-    const necessaryHeightOfTextArea = document.documentElement.clientHeight/100 * 50
+  const setNotExpandOfTextArea = () => {
+    setIsNeedToLimitTextAreaHeight(false)
+  }
 
-    console.log('необходимая высота текстовой зоны - ' + necessaryHeightOfTextArea)
-
-    if(descriptionTextAreaRef.current) {
-      const currentTextAreaHeight = descriptionTextAreaRef.current?.scrollHeight
-     // const currentTextAreaHeight =
-      console.log('высота текстовой зоны ДО - ' + currentTextAreaHeight)
-
-      if(currentTextAreaHeight >= necessaryHeightOfTextArea){
-        descriptionTextAreaRef.current.style.height = necessaryHeightOfTextArea + 'px'
-        console.log('высота текстовой зоны ПОСЛЕ - ' + descriptionTextAreaRef.current.style.height)
-        setIsNeedToLimitTextAreaHeight(true)
-      }
-      else {
-        setIsNeedToLimitTextAreaHeight(false)
-      }
-    }
+  const percentageOfTextAreaHeight = 51;
 
 
-  }*/
-
- // useSetHeightOfTextArea(descriptionTextAreaRef, 50, 'visually-hidden')
+  useSetHeightOfTextArea(descriptionTextAreaRef, percentageOfTextAreaHeight, setExpandOfTextArea, setNotExpandOfTextArea)
 
   return (
     <div className='task__container'>
@@ -108,7 +92,7 @@ const Task = (props) => {
         onInputTitleChange={onInputTitleChange}
         onInputDescriptionChange={onInputDescriptionChange}
         closeModal={closeModal}
-        //setHeightOfTextArea={setHeightOfTextArea}
+        //setExpandOfTextArea={setExpandOfTextArea}
       />
     </div>
   )

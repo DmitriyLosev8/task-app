@@ -1,41 +1,33 @@
 import {useEffect} from "react";
 
 
-export const  useSetHeightOfTextArea = (ref, percentage, style  ) => {
+export const  useSetHeightOfTextArea = (ref, percentage, setExpandOfTextArea, setNotExpandOfTextArea  ) => {
 
   const necessaryHeightOfTextArea = document.documentElement.clientHeight/100 * percentage
   console.log('необходимая высота текстовой зоны - ' + necessaryHeightOfTextArea)
 
+
   useEffect(() => {
     if(ref.current) {
-      //ref.current.style.height = 'auto'
       const textAreaHeight = ref.current?.scrollHeight
+      const numberOfLinesInTextArea = Math.round(percentage/100 * 32.7)
       console.log('высота текстовой зоны ДО - ' + textAreaHeight)
+      console.log('количество строк должно быть - ' + numberOfLinesInTextArea)
 
       if(textAreaHeight >= necessaryHeightOfTextArea) {
         ref.current.style.height = necessaryHeightOfTextArea + 'px'
+        ref.current.style.setProperty('--number-of-lines-in-task-text-area', numberOfLinesInTextArea);
+        //document.documentElement.style.setProperty('--number-of-lines-in-task-text-area', 'numberOfLinesInTextArea');
         console.log('высота текстовой зоны ПОСЛЕ - ' + ref.current.style.height)
-        //ref.current.className.add('style')
-        return true
-
-        /*ref.current.style.display = 'webkit-box'
-        ref.current.style.webkitLineClamp = '20'
-        ref.current.style.lineClamp = '20'
-        ref.current.style.webkitOrient = 'vertical'
-        ref.current.style.overflow = 'hidden'
-        ref.current.style.textOverflow = 'ellipsis'*/
-
-        //ref.current.style.textOverflow = 'ellipsis'
-        //ref.current.style.overflow = 'hidden'
-        //ref.current.style.whiteSpace = 'nowrap'
-
+        setExpandOfTextArea()
       }
-      else {}
-      return false
-
+      else {
+        ref.current.style.height = 'auto'
+        setNotExpandOfTextArea()
+      }
     }
     else {
       console.log('нету рефа')
     }
-  },); //[text]
+  },); //[text]  [ref.current.style.height]
 }

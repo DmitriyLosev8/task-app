@@ -15,7 +15,6 @@ const TaskModal = (props) => {
     onInputTitleChange,
     onInputDescriptionChange,
     closeModal,
-    setHeightOfTextArea,
   } = props
 
   const taskModalRef = useRef(null)
