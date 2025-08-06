@@ -38,18 +38,22 @@ const Task = (props) => {
     onCloseModalClicked(task.id, titleText, descriptionText )
   }
 
+  const percentageOfTextAreaHeight = 51;
+
   const setExpandOfTextArea = () => {
     setIsNeedToLimitTextAreaHeight(true)
+    console.log('ВКЛЮЧИЛ')
   }
 
   const setNotExpandOfTextArea = () => {
     setIsNeedToLimitTextAreaHeight(false)
+    console.log('ВЫКЛЮЧИЛ')
   }
 
-  const percentageOfTextAreaHeight = 51;
 
 
-  useSetHeightOfTextArea(descriptionTextAreaRef, percentageOfTextAreaHeight, setExpandOfTextArea, setNotExpandOfTextArea)
+
+  useSetHeightOfTextArea(descriptionTextAreaRef, percentageOfTextAreaHeight,  setExpandOfTextArea, setNotExpandOfTextArea)
 
   return (
     <div className='task__container'>
@@ -92,7 +96,7 @@ const Task = (props) => {
         onInputTitleChange={onInputTitleChange}
         onInputDescriptionChange={onInputDescriptionChange}
         closeModal={closeModal}
-        //setExpandOfTextArea={setExpandOfTextArea}
+        setExpandOfTextArea={setExpandOfTextArea}
       />
     </div>
   )
