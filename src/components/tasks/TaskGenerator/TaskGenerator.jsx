@@ -28,17 +28,21 @@ const TaskGenerator = (props) => {
     setCurrentTasks(newTasksArray)
   }
 
-  const refreshOneTask = (taskId, title, description) => {
-    setCurrentTasks(tasks.map((task) => {
-      return task.id === taskId
-        ? {...task, title: title, description: description}
-        : {...task}
-    }))
-  }
+
 
   const deleteTask = (taskId) => {
     setCurrentTasks(tasks.filter((task) => task.id !== taskId))
 
+  }
+
+  const refreshOneTask = (taskId, title, description, isCompleted) => {
+    console.log('ОбНОВИЛ МАССИВ ЗАДАЧ')
+
+    setCurrentTasks(tasks.map((task) => {
+      return task.id === taskId
+        ? {...task, title: title, description: description, isCompleted: isCompleted }
+        : {...task}
+    }))
   }
 
   const completeTask = (taskId) => {

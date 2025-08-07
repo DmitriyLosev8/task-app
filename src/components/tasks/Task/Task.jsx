@@ -29,16 +29,22 @@ const Task = (props) => {
     setTitleText(event.target.value)
   }
 
+  const turnToModal = () => {
+    if(!task.isCompleted) {
+      setIsModal(!isModal)
+    }
+  }
+
   const onInputDescriptionChange = (event) =>{
     setDescriptionText(event.target.value)
   }
 
   const closeModal = () => {
     setIsModal(false)
-    onCloseModalClicked(task.id, titleText, descriptionText )
+    onCloseModalClicked(task.id, titleText, descriptionText, task.isCompleted  )
   }
 
-  const percentageOfTextAreaHeight = 51;
+  const percentageOfTextAreaHeight = 40;
 
   const setExpandOfTextArea = () => {
     setIsNeedToLimitTextAreaHeight(true)
@@ -49,9 +55,6 @@ const Task = (props) => {
     setIsNeedToLimitTextAreaHeight(false)
     console.log('ВЫКЛЮЧИЛ')
   }
-
-
-
 
   useSetHeightOfTextArea(descriptionTextAreaRef, percentageOfTextAreaHeight,  setExpandOfTextArea, setNotExpandOfTextArea)
 
@@ -65,7 +68,7 @@ const Task = (props) => {
         {/*<RiTodoFill className='task__icon'/>*/}
         <div
           className={`task__text `}
-          onClick={() => setIsModal(!isModal)}
+          onClick={turnToModal}
         >
           <div className='task__text-title'>
             <p>{titleText}</p>
@@ -88,16 +91,18 @@ const Task = (props) => {
           </div>
         </div>
       </div>
-      <TaskModal
-        className={`${!isModal ? 'visually-hidden' : ''}`}
-        isModal={isModal}
-        titleText={titleText}
-        descriptionText={descriptionText}
-        onInputTitleChange={onInputTitleChange}
-        onInputDescriptionChange={onInputDescriptionChange}
-        closeModal={closeModal}
-        setExpandOfTextArea={setExpandOfTextArea}
-      />
+      {isModal && (
+          <TaskModal
+            className={`${!isModal ? 'visually-hidden' : ''}`}
+            isModal={isModal}
+            titleText={titleText}
+            descriptionText={descriptionText}
+            onInputTitleChange={onInputTitleChange}
+            onInputDescriptionChange={onInputDescriptionChange}
+            closeModal={closeModal}
+          />
+        )
+      }
     </div>
   )
 }

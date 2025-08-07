@@ -15,7 +15,6 @@ const TaskModal = (props) => {
     onInputTitleChange,
     onInputDescriptionChange,
     closeModal,
-    setExpandOfTextArea
   } = props
 
   const taskModalRef = useRef(null)
@@ -27,12 +26,6 @@ const TaskModal = (props) => {
 
   useClickOutside(taskModalRef, closeModal, isModal)
 
- /* const submitTask = () => {
-    setExpandOfTextArea()
-    closeModal()
-
-  }*/
-  
   return (
     <div
       className={classNames(className, 'task-modal')}
