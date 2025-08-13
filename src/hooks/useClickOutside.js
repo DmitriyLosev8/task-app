@@ -6,6 +6,7 @@ export const  useClickOutside = (ref, callback, isOpen) => {
       callback()
     }
   }
+
   useEffect(() => {
     document.addEventListener("mousedown",handleClick)
 

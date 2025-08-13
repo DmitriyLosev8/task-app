@@ -23,7 +23,6 @@ const TaskModal = (props) => {
 
   useInputAreaExpand(titleRef, titleText)
   useInputAreaExpand(descriptionRef, descriptionText)
-
   useClickOutside(taskModalRef, closeModal, isModal)
 
   return (
@@ -34,7 +33,7 @@ const TaskModal = (props) => {
            ref={taskModalRef}
        >
         <TaskFormInput
-          className={`task-modal__inputs-title `} //${!isInputExpanded ? 'visually-hidden' : ''}
+          className={`task-modal__inputs-title `}
           ref={titleRef}
           maxlength={100}
           type="text"

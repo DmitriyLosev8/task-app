@@ -4,9 +4,6 @@ $mobile: 767px;
 $mobile-m: 533px;
 $mobile-s: 480px;
 
-
-
-
 @mixin laptop-above {
   @media (width > $laptop) {
     @content;

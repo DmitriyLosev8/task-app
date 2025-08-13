@@ -14,9 +14,7 @@ const TaskGenerator = (props) => {
 
   const [tasks, setCurrentTasks] = useState([])
 
-
   const addTask = (description, title) =>{
-
     const newTask = {
       description: description,
       title: title,
@@ -28,16 +26,11 @@ const TaskGenerator = (props) => {
     setCurrentTasks(newTasksArray)
   }
 
-
-
   const deleteTask = (taskId) => {
     setCurrentTasks(tasks.filter((task) => task.id !== taskId))
-
   }
 
   const refreshOneTask = (taskId, title, description, isCompleted) => {
-    console.log('ОбНОВИЛ МАССИВ ЗАДАЧ')
-
     setCurrentTasks(tasks.map((task) => {
       return task.id === taskId
         ? {...task, title: title, description: description, isCompleted: isCompleted }

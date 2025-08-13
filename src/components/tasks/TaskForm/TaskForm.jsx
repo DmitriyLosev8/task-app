@@ -27,10 +27,6 @@ const TaskForm = (props) => {
     setDescriptionText(event.target.value)
   }
 
-  useInputAreaExpand(titleRef, titleText)
-  useInputAreaExpand(descriptionRef, descriptionText)
-
-
   const clearInputs = () => {
     setDescriptionText('')
     setTitleText('')
@@ -41,7 +37,6 @@ const TaskForm = (props) => {
     onSubmitButtonClicked(descriptionText,titleText)
     clearInputs()
   }
-
 
   const expandInputsArea = () => {
     if (!isInputExpanded) {
@@ -55,6 +50,8 @@ const TaskForm = (props) => {
     }
   }
 
+  useInputAreaExpand(titleRef, titleText)
+  useInputAreaExpand(descriptionRef, descriptionText)
   useClickOutside(inputsAreaRef, collapseInputsArea, isInputExpanded)
 
   return (

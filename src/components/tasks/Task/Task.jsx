@@ -20,13 +20,15 @@ const Task = (props) => {
   const [isMouseOver, setMouseOver] = useState(false)
   const [isModal, setIsModal] = useState(false)
   const [isNeedToLimitTextAreaHeight, setIsNeedToLimitTextAreaHeight] = useState(false)
-
   const [titleText, setTitleText] = useState(task.title)
   const [descriptionText, setDescriptionText] = useState(task.description)
 
-
   const onInputTitleChange = (event) => {
     setTitleText(event.target.value)
+  }
+
+  const onInputDescriptionChange = (event) =>{
+    setDescriptionText(event.target.value)
   }
 
   const turnToModal = () => {
@@ -35,27 +37,20 @@ const Task = (props) => {
     }
   }
 
-  const onInputDescriptionChange = (event) =>{
-    setDescriptionText(event.target.value)
-  }
-
   const closeModal = () => {
     setIsModal(false)
     onCloseModalClicked(task.id, titleText, descriptionText, task.isCompleted  )
   }
 
-  const percentageOfTextAreaHeight = 40;
-
   const setExpandOfTextArea = () => {
     setIsNeedToLimitTextAreaHeight(true)
-    console.log('ВКЛЮЧИЛ')
   }
 
   const setNotExpandOfTextArea = () => {
     setIsNeedToLimitTextAreaHeight(false)
-    console.log('ВЫКЛЮЧИЛ')
   }
 
+  const percentageOfTextAreaHeight = 40;
   useSetHeightOfTextArea(descriptionTextAreaRef, percentageOfTextAreaHeight,  setExpandOfTextArea, setNotExpandOfTextArea)
 
   return (
@@ -75,9 +70,7 @@ const Task = (props) => {
           </div>
           <div
             className={`task__text-description ${isNeedToLimitTextAreaHeight ? 'task__text-description--expanded' : ''}`}
-           // className='task__text-description'
             ref={descriptionTextAreaRef}
-
             >
             <p>{descriptionText}  </p>
           </div>

@@ -13,7 +13,6 @@ const TaskList = (props) => {
 
   } = props
 
-
   const columnBreakpoints = {
       350: 1,
       533: 2,
@@ -33,7 +32,7 @@ const TaskList = (props) => {
     className={classNames(className, 'task-list')}
   >
 
-    {!tasks.length ? <h4>Список заметок пуст</h4> :
+    {!tasks.length ? <h4>Список задач пуст</h4> :
       <ResponsiveMasonry
         columnsCountBreakPoints={columnBreakpoints}
         gutterBreakpoints={gutterBreakpoints}
