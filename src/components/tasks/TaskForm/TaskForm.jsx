@@ -52,7 +52,7 @@ const TaskForm = (props) => {
 
   useInputAreaExpand(titleRef, titleText)
   useInputAreaExpand(descriptionRef, descriptionText)
-  useClickOutside(inputsAreaRef, collapseInputsArea, isInputExpanded)
+  useClickOutside(inputsAreaRef, collapseInputsArea)
 
   return (
     <div className={classNames(className,)}

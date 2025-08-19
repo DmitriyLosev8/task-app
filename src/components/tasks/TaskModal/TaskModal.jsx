@@ -23,7 +23,7 @@ const TaskModal = (props) => {
 
   useInputAreaExpand(titleRef, titleText)
   useInputAreaExpand(descriptionRef, descriptionText)
-  useClickOutside(taskModalRef, closeModal, isModal)
+  useClickOutside(taskModalRef, closeModal)
 
   return (
     <div

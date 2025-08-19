@@ -12,8 +12,7 @@ const Task = (props) => {
     task,
     onDeleteButtonClicked,
     onCompleteButtonClicked,
-    onCloseModalClicked
-
+    refreshTask
   } = props
 
   const descriptionTextAreaRef = useRef(null)
@@ -39,7 +38,7 @@ const Task = (props) => {
 
   const closeModal = () => {
     setIsModal(false)
-    onCloseModalClicked(task.id, titleText, descriptionText, task.isCompleted  )
+    refreshTask(task.id, titleText, descriptionText, task.isCompleted  )
   }
 
   const setExpandOfTextArea = () => {

@@ -9,7 +9,7 @@ const TaskList = (props) => {
     tasks,
     onDeleteButtonClicked,
     onCompleteButtonClicked,
-    onCloseModalClicked,
+    refreshTask,
 
   } = props
 
@@ -45,7 +45,7 @@ const TaskList = (props) => {
                 key={task.id}
                 onDeleteButtonClicked={onDeleteButtonClicked}
                 onCompleteButtonClicked={onCompleteButtonClicked}
-                onCloseModalClicked={onCloseModalClicked}
+                refreshTask={refreshTask}
               />
           ))}
         </Masonry>

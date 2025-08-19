@@ -36,6 +36,7 @@ const TaskGenerator = (props) => {
         ? {...task, title: title, description: description, isCompleted: isCompleted }
         : {...task}
     }))
+    console.log("сохранил")
   }
 
   const completeTask = (taskId) => {
@@ -76,7 +77,7 @@ const TaskGenerator = (props) => {
         tasks={tasks}
         onDeleteButtonClicked={deleteTask}
         onCompleteButtonClicked={completeTask}
-        onCloseModalClicked={refreshOneTask}
+        refreshTask={refreshOneTask}
       />
       {completedTasksCount > 0 &&
         <h4>{`Вы завершили ${completedTasksCount} ${completedTasksCount > 1
