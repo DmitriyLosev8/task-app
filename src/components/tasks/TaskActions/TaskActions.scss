@@ -1,9 +1,0 @@
-@use '@/styles/index' as *;
-
-.task-actions {
-  max-width: fluid(100,60);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin: fluid(20,12) auto;
-}
